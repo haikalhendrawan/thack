@@ -53,14 +53,14 @@ export default function LoginForm() {
       const response = await axios.post("http://localhost:3031/login", {username:value.username, password:value.password}, {withCredentials:true});
       setAuth(response.data);  //  {user_id:xxx, username: xx, nik:xx, name:xx, accessToken, role:[xx],msg:xx}
       localStorage.setItem('mode', 'light');
-      {origin?window.location.href=`${origin}/home?accessToken=${JSON.stringify(response.data)}`:window.location.href="http://localhost:3030/app"};
+      {origin?window.location.href=`${origin}/home?accessToken=${JSON.stringify(response.data.accessToken)}`:window.location.href="http://localhost:3030/app"};
     }catch(err){
       console.log(err);
       setAuth(err.response.data);
       setOpen(true);
     }
   }
-
+  
   const handleClose = ()=>{
     setOpen(false);
   }
