@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App 1</title>
+    <link href="/index.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="/logo-telkom.png" type="image/icon type">
+</head>
+<body>
+    <div class="card">
+        <h1>Aplikasi A</h1>
+        <img src="/logo-telkom.png" alt="logo telkom" class="logo">
+    </div>
+    <div class="container" style="justify-content: center;">  
+        <div class="form" >
+            <form action="/login" method="POST" id="loginForm">
+                <h1>Login</h1>
+                <input type="text" class="user" placeholder="Username" id="username"/>
+                <input type="password" class="pass"placeholder="Password" id="password"/>
+                <button class="login" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); 
+
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        var data = { username: username, password: password }; // Creating an object with the data
+
+        try {
+            await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' // Specify JSON content type
+                },
+                body: JSON.stringify(data) // Convert the object to JSON string
+            });
+        } catch(error) {
+            console.error('Error:', error);
+        }
+    });
+
+    </script>
+</body>
+</html>

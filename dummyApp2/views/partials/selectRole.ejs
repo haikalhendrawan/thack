@@ -1,0 +1,16 @@
+<div class="button-container">
+    <h2>Role : User</h2>
+    <button onclick="location.href = './';">User</button>
+    <button onclick="location.href = './admin1';">Admin Lv.1</button>
+    <button onclick="location.href = './admin2';">Admin Lv.2</button>
+    <button onclick="location.href = './admin3';">Admin Lv.3</button>
+    <button onclick="location.href = './admin4';">Admin Lv.4</button>
+    <button onclick="location.href = './admin5';">Admin Lv.5</button>
+    <button onclick="redirectToLogin()" style="background-color:blue">Log Out</button>
+</div>
+
+<script>
+    function redirectToLogin() {
+        window.location.href = 'http://localhost:3030/login?origin=http://localhost:3003';
+    }
+</script>
