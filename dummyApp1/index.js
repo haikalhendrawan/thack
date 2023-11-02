@@ -82,24 +82,24 @@ function allowedRole(roleId, appId) {
 
 
 
-app.get('/', loggedSSO, (req, res) => {
-    res.render('homePage');
+app.get('/', loggedSSO, allowedRole(3, 2), (req, res) => {
+    res.render('homePage', {nama:userData.name, nik:userData.nik}) ;
 })
 
 app.get('/home', loggedSSO, allowedRole(3, 2), (req, res) => {
-    res.render('homePage');
+    res.render('homePage', {nama:userData.name, nik:userData.nik});
 })
 
 app.get('/admin',loggedSSO, allowedRole(4, 2), (req, res) => {
-    res.render('adminPage');
+    res.render('adminPage', {nama:userData.name, nik:userData.nik});
 })
 
 app.get('/superadmin', loggedSSO, allowedRole(5, 2), (req, res) => {
-    res.render('superAdminPage');
+    res.render('superAdminPage', {nama:userData.name, nik:userData.nik});
 })
 
 app.get('/403', (req, res) => {
-    res.render('403');
+    res.render('403', {nama:userData.name, nik:userData.nik}), {nama:userData.name, nik:userData.nik};
 })
 
 app.get('/logout',loggedSSO, (req, res) => {

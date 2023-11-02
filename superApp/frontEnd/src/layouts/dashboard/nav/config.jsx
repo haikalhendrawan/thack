@@ -1,6 +1,7 @@
 // component
 import SvgColor from '../../../components/svg-color';
 
+
 // ----------------------------------------------------------------------
 
 const icon = (name) => <SvgColor src={`/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />;
@@ -8,7 +9,7 @@ const icon = (name) => <SvgColor src={`/icons/navbar/${name}.svg`} sx={{ width: 
 const navConfig = [
   {
     title: 'Aplikasi A',
-    path: 'http://localhost:3004',
+    path: `http://localhost:3004`,
     icon: <img src="../../../logo-telkom.png" style={{ width: '30px', height: '30px' }}/>,
     newTab:true
   },

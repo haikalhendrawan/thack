@@ -6,6 +6,7 @@ import { styled, alpha } from '@mui/material/styles';
 import { Box, Link, Button, Drawer, Typography, Avatar, Stack, LinearProgress } from '@mui/material';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
+import { useAuth } from '../../../hooks/useAuth';
 // components
 import Logo from '../../../components/logo';
 import Scrollbar from '../../../components/scrollbar';
@@ -34,7 +35,9 @@ Nav.propTypes = {
 
 export default function Nav({ openNav, onCloseNav }) {
   const { pathname } = useLocation();
-
+  const auth = useAuth();
+  const token = JSON.stringify(auth.auth.accessToken);
+  console.log(token);
   const isDesktop = useResponsive('up', 'lg');
 
   useEffect(() => {
@@ -61,7 +64,32 @@ export default function Nav({ openNav, onCloseNav }) {
       </Box>
       
       <NavSection data={navConfig5} header={"ADMIN"} />
-      <NavSection data={navConfig} header={"EKOSISTEM SUPER APP"} />
+      <NavSection data={[
+  {
+    title: 'Aplikasi A',
+    path: `http://localhost:3004/home?accessToken=${token}`,
+    icon: <img src="../../../logo-telkom.png" style={{ width: '30px', height: '30px' }}/>,
+    newTab:true
+  },
+  {
+    title: 'Aplikasi B',
+    path: `http://localhost:3003/home?accessToken=${token}`,
+    icon: <img src="../../../kemenkeu.png" style={{ width: '30px', height: '30px' }}/>,
+    newTab:true
+  },
+  {
+    title: 'Aplikasi C',
+    path: '/',
+    icon: <img src="../../../tokopedia.png" style={{ width: '30px', height: '30px' }}/>,
+    newTab:false
+  },
+  {
+    title: 'Aplikasi D',
+    path: '/',
+    icon: <img src="../../../pln.png" style={{ width: '30px', height: '30px' }}/>,
+    newTab:false
+  },
+]} header={"EKOSISTEM SUPER APP"} />
       <NavSection data={navConfig3} header={"FITUR"}/>
       <NavSection data={navConfig4} header={"OTHER"} />
 

@@ -33,6 +33,8 @@ var userData ;
 //     exp: 1698855817
 //   }
 
+
+
 // --------------------------------
 
 app.set('view engine', 'ejs');
@@ -84,29 +86,29 @@ app.use(express.json());
 
 
 app.get('/', loggedSSO, (req, res) => {
-    res.render('adminPage1');
+    res.render('adminPage1', {nama:userData.name, nik:userData.nik});
 })
 
 app.get('/home:accessToken?', loggedSSO, (req, res) => {
-    res.render('homePage');
+    res.render('homePage', {nama:userData.name, nik:userData.nik});
 })
 
 // allowed Role 6, 7, 8, 9, 10, 11 (user, admin1, admin2, ....), app id (3)
 
 app.get('/admin1', loggedSSO, allowedRole(7,3), (req, res) => {
-    res.render('adminPage1');
+    res.render('adminPage1', {nama:userData.name, nik:userData.nik});
 })
 app.get('/admin2',loggedSSO, allowedRole(8,3), (req, res) => {
-    res.render('adminPage2');
+    res.render('adminPage2', {nama:userData.name, nik:userData.nik});
 })
 app.get('/admin3', loggedSSO, allowedRole(9,3), (req, res) => {
-    res.render('adminPage3');
+    res.render('adminPage3', {nama:userData.name, nik:userData.nik});
 })
 app.get('/admin4',loggedSSO, allowedRole(10,3),(req, res) => {
-    res.render('adminPage4');
+    res.render('adminPage4', {nama:userData.name, nik:userData.nik});
 })
 app.get('/admin5',loggedSSO, allowedRole(11,3), (req, res) => {
-    res.render('adminPage5');
+    res.render('adminPage5', {nama:userData.name, nik:userData.nik});
 })
 
 app.get('/logout',loggedSSO, (req, res) => {
@@ -116,7 +118,7 @@ app.get('/logout',loggedSSO, (req, res) => {
 })
 
 app.get('/403', (req, res) => {
-    res.render('403');
+    res.render('403', {nama:userData.name, nik:userData.nik});
 })
 
 
